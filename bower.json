@@ -1,0 +1,16 @@
+{
+  "name": "fs-angular-submit",
+  "description": "",
+  "main": [
+    "dist/submit.js"
+  ],
+  "authors": [
+    "Firestitch Inc."
+  ],
+  "license": "MIT",
+  "ignore": [
+    "src",
+    ".gitignore"
+  ],
+  "private": false
+}
