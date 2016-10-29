@@ -35,8 +35,10 @@
 
 	            el.attr('action','javascript:;').append(button);
 
-	            button[0].click();
-	            button.remove();
+	            setTimeout(function() {
+					button[0].click();
+	            	button.remove();
+	            });
             }
     	}
     });
