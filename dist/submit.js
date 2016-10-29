@@ -50,7 +50,7 @@
         /**
          * @ngdoc method
          * @name submit
-         * @methodOf fs.fsService
+         * @methodOf fs.fsSubmit
          * @description Targets a &lt;form&gt; and places a hidden button inside and triggers the button's click event which submits the form
          * @param {string} id The id of the form
          **/
