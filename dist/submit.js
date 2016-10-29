@@ -37,6 +37,7 @@
      * @name fs.fsService
      * @description
      */
+
     angular.module('fs-angular-submit')
     .factory('fsSubmit',function() {
 
@@ -53,6 +54,7 @@
          * @description Targets a &lt;form&gt; and places a hidden button inside and triggers the button's click event which submits the form
          * @param {string} id The id of the form
          **/
+
     	function submit(id) {
             var el = angular.element(document.querySelector('#' + id));
 
