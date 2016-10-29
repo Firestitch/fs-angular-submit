@@ -1,0 +1,43 @@
+(function () {
+    'use strict';
+
+   /**
+     * @ngdoc service
+     * @name fs.fsService
+     * @description
+     */
+
+    angular.module('fs-angular-submit')
+    .factory('fsSubmit',function() {
+
+    	var service = {
+    		submit: submit
+    	};
+
+    	return service;
+
+        /**
+         * @ngdoc method
+         * @name submit
+         * @methodOf fs.fsService
+         * @description Targets a &lt;form&gt; and places a hidden button inside and triggers the button's click event which submits the form
+         * @param {string} id The id of the form
+         **/
+
+    	function submit(id) {
+            var el = angular.element(document.querySelector('#' + id));
+
+            if(el.length) {
+	            var button = angular.element('<button>')
+	                            .attr('type','submit')
+	                            .css('visibility','hidden')
+	                            .css('display','none');
+
+	            el.attr('action','javascript:;').append(button);
+
+	            button[0].click();
+	            button.remove();
+            }
+    	}
+    });
+})();

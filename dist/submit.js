@@ -7,9 +7,9 @@
      * @name fs.directives:fs-submit
      * @restrict E
      * @param {string} fs-submit The id of the form
-    */
+     */
     angular.module('fs-angular-submit',[])
-    .directive('fsSubmit', function () {
+    .directive('fsSubmit', function (fsSubmit) {
         return {
             restrict: 'A',
             scope: {
@@ -19,22 +19,9 @@
                 post: function($scope,elem) {
 
                     setTimeout(function() {
-                        var el = angular.element(document.querySelector('#' + $scope.id));
-
-                        if(el.length) {
-                            angular.element(elem).on('click',function() {
-
-                                var button = angular.element('<button>')
-                                                .attr('type','submit')
-                                                .css('visibility','hidden')
-                                                .css('display','none');
-
-                                el.attr('action','javascript:;').append(button);
-
-                                button[0].click();
-                                button.remove();
-                            });
-                        }
+                        angular.element(elem).on('click',function() {
+                            fsSubmit.submit($scope.id);
+                        });
                     });
                 }
             }
@@ -42,4 +29,46 @@
     });
 })();
 
+(function () {
+    'use strict';
 
+   /**
+     * @ngdoc service
+     * @name fs.fsService
+     * @description
+     */
+
+    angular.module('fs-angular-submit')
+    .factory('fsSubmit',function() {
+
+    	var service = {
+    		submit: submit
+    	};
+
+    	return service;
+
+        /**
+         * @ngdoc method
+         * @name submit
+         * @methodOf fs.fsService
+         * @description Targets a &lt;form&gt; and places a hidden button inside and triggers the button's click event which submits the form
+         * @param {string} id The id of the form
+         **/
+
+    	function submit(id) {
+            var el = angular.element(document.querySelector('#' + id));
+
+            if(el.length) {
+	            var button = angular.element('<button>')
+	                            .attr('type','submit')
+	                            .css('visibility','hidden')
+	                            .css('display','none');
+
+	            el.attr('action','javascript:;').append(button);
+
+	            button[0].click();
+	            button.remove();
+            }
+    	}
+    });
+})();
